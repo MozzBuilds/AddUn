@@ -16,7 +16,6 @@ class GameViewController: UIViewController {
     @IBOutlet weak var numLabel : UILabel?
     @IBOutlet weak var scoreLabel : UILabel?
     @IBOutlet weak var timerLabel : UILabel?
-    
 
     
     //Initialize the values that feed the variables
@@ -28,8 +27,7 @@ class GameViewController: UIViewController {
     //None for num, since this doesn't need used
     
     //We want 5 numbers to be generated, so range is index 0 to 4. Dealing with ints, so using <5 will get us range indexes 0,1,2,3,4 fine
-    let numberQuantity = 0..<5
-    
+    let numberQuantity = 0..<3
     
     
     func numberGenerator()-> String{
@@ -191,9 +189,31 @@ class GameViewController: UIViewController {
     func endGame(){
         
         //Reset the timer
+        timer?.invalidate()
+        timer = nil
+        
         //Display a message saying you got so many points
+        let popUp = UIAlertController(title: "fin.",
+                                      message: "Final Score: \(score) pts.",
+                                      preferredStyle: .alert)
+        
         //Action to start again
+        popUp.addAction(UIAlertAction(title: "Play Again",
+                                      style: .default,
+                                      handler: nil))
+        
+        self.present(popUp, animated: false, completion: nil)
         //Reset the score, time, and the corresponding labels
+        
+        //Reset the label vars
+        score = 0
+        timerSeconds = timerSetting
+        
+        //Update the labels
+        setNumLabel()
+        setScoreLabel()
+        setTimerLabel()
+
     }
         
     
