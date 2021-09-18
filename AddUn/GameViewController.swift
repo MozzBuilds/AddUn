@@ -16,6 +16,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var numLabel : UILabel?
     @IBOutlet weak var scoreLabel : UILabel?
     @IBOutlet weak var timerLabel : UILabel?
+//    @IBOutlet weak var quantityField : UITextField?
 
     
     //Initialize the values that feed the variables
@@ -26,7 +27,8 @@ class GameViewController: UIViewController {
     var timerSeconds = 0 //Initial value for the number of seconds
     //None for num, since this doesn't need used
     
-    //We want 5 numbers to be generated, so range is index 0 to 4. Dealing with ints, so using <5 will get us range indexes 0,1,2,3,4 fine
+    //Initial range for the quantity
+//    let upperQuantity = quantityField?.text
     let numberQuantity = 0..<3
     
     
@@ -75,16 +77,25 @@ class GameViewController: UIViewController {
         timerLabel?.text = String(format: "%d", timerSeconds) + "s"
     }
     
+//    func setQuantityField(){
+//        quantityField?.text = "3"
+//    }
+    
     
     //When the view has loaded, run our setters to set our initial values
     override func viewDidLoad() {
         super.viewDidLoad()
+//        setQuantityField()
         setUserInputField()
         setNumLabel()
         setScoreLabel()
         timerSeconds = timerSetting //Initialize timerSeconds at 60
         setTimerLabel()
     }
+    
+//    @IBAction func changeQuantity(){
+//        setQuantityField()
+//    }
     
     //Function to check the user input against the generated number
     @IBAction func checkInputCompletion(){
